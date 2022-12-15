@@ -20,7 +20,7 @@ const MainWrapper = styled.div`
 	border-radius: 0 1.5rem 1.5rem 1.5rem;
 	@media (max-width: 768px) {
 		flex-direction: column;
-    min-height: 100vh;
+		min-height: 100vh;
 	}
 	.images-wrapper {
 		position: relative;
@@ -29,8 +29,8 @@ const MainWrapper = styled.div`
 		width: 50%;
 		@media (max-width: 768px) {
 			width: 100%;
-      top: -15%;
-      left: -20%;
+			top: -15%;
+			left: -20%;
 		}
 		/* display: flex;
     align-items: center;
@@ -40,9 +40,8 @@ const MainWrapper = styled.div`
 			width: 200px;
 			position: absolute;
 			/* top: 30%; */
-      /* border-radius: 50%; */
-     
-    }
+			/* border-radius: 50%; */
+		}
 		svg {
 			/* height: 50%; */
 			/* width: 37%; */
@@ -77,7 +76,7 @@ const MainWrapper = styled.div`
 		justify-content: center;
 		@media (max-width: 768px) {
 			width: 100%;
-      transform: translateY(-100px);
+			transform: translateY(-100px);
 		}
 		h2 {
 			font-size: 2rem;
@@ -110,17 +109,18 @@ const MainWrapper = styled.div`
 				align-items: center;
 				margin: 0.3rem;
 				padding: 0.5rem 0;
+				justify-content: space-between;
 				p {
 					font-weight: bold;
 					font-size: 18px;
 				}
 				.left {
-					width: 80%;
+					width: 60%;
 					display: flex;
 					align-items: center;
 					gap: 25%;
-          overflow: hidden;
-					/* justify-content: space-between; */
+					overflow: hidden;
+					justify-content: space-between;
 					/* margin-right: 1rem; */
 					img {
 						height: 40px;
@@ -166,7 +166,6 @@ export default function Animation() {
 
 	const final = [...xMovement, ...xNegMovement]
 
-
 	const handleClick = () => {
 		setDegree((prev) => prev + 54)
 		if (currentColor < colors.length - 1) {
@@ -177,10 +176,14 @@ export default function Animation() {
 	}
 
 	const handlers = useSwipeable({
-		onSwiped: (eventData) => handleClick()
-	  });
+		onSwiped: (eventData) => handleClick(),
+	})
 	return (
-		<MainWrapper {...handlers} degree={degree} currentColor={colors[currentColor]}>
+		<MainWrapper
+			{...handlers}
+			degree={degree}
+			currentColor={colors[currentColor]}
+		>
 			<div className="images-wrapper">
 				<svg
 					width="1497"
@@ -210,7 +213,7 @@ export default function Animation() {
 							animate={{ opacity: 1, x: 0, transition: { duration: 0.3 } }}
 							exit={{ x: -300 }}
 						>
-							 Microphone
+							Microphone
 						</motion.h1>
 					)}
 				</AnimatePresence>
@@ -236,7 +239,7 @@ export default function Animation() {
 								y: yMovement,
 								transition: { duration: 1, type: "linear" },
 							}}
-              exit={{x: -400, opacity: 0}}
+							exit={{ x: -400, opacity: 0 }}
 							src="/camera.png"
 							alt=""
 						/>
@@ -252,7 +255,7 @@ export default function Animation() {
 								y: yMovement,
 								transition: { duration: 1, type: "linear" },
 							}}
-              exit={{x: -400, opacity: 0}}
+							exit={{ x: -400, opacity: 0 }}
 							src="/mic.png"
 							alt=""
 						/>
@@ -268,7 +271,7 @@ export default function Animation() {
 								y: yMovement,
 								transition: { duration: 1, type: "linear" },
 							}}
-              exit={{x: -400, opacity: 0}}
+							exit={{ x: -400, opacity: 0 }}
 							src="/headphone.png"
 							alt=""
 						/>
@@ -283,71 +286,246 @@ export default function Animation() {
 						<p className="right">NO</p>
 					</div>
 
-								<div className="row gray">
-                  
-                  <div   className="left">
-                    <AnimatePresence mode="wait">
-                      {currentColor === 0 &&
-                        <><motion.p initial={{x: 200, opacity: 0}} animate={{x: 0, opacity: 1, transition: {duration: 0.4, type: 'easeIn'}}}>Camera</motion.p> <motion.img initial={{x: 200, opacity: 0}} animate={{x: 0, opacity: 1, transition: {duration: 0.2, type: 'easeIn'}}}  src="/camera.png"  /></>
-                      }
-                    </AnimatePresence>
-                    <AnimatePresence mode="wait">
-                      {currentColor === 1 &&
-                        <><motion.p initial={{x: 200, opacity: 0}} animate={{x: 0, opacity: 1, transition: {duration: 0.4, type: 'easeIn'}}}>Headphone</motion.p> <motion.img initial={{x: 200, opacity: 0}} animate={{x: 0, opacity: 1, transition: {duration: 0.2, type: 'easeIn'}}}  src="/headphone.png"  /></>
-                      }
-                    </AnimatePresence>
-                    <AnimatePresence mode="wait">
-                      {currentColor === 2 &&
-                        <><motion.p initial={{x: 200, opacity: 0}} animate={{x: 0, opacity: 1, transition: {duration: 0.4, type: 'easeIn'}}}>Microphone</motion.p> <motion.img initial={{x: 200, opacity: 0}} animate={{x: 0, opacity: 1, transition: {duration: 0.2, type: 'easeIn'}}}  src="/mic.png"  /></>
-                      }
-                    </AnimatePresence>
-                  </div>
-									<div className="right">+</div>
-								</div>
-								<div className="row ">
-                  
-                  <div   className="left">
-                    <AnimatePresence mode="wait">
-                      {currentColor === 0 &&
-                        <><motion.p initial={{x: 200, opacity: 0}} animate={{x: 0, opacity: 1, transition: {duration: 0.4, type: 'easeIn'}}}>Camera</motion.p> <motion.img initial={{x: 200, opacity: 0}} animate={{x: 0, opacity: 1, transition: {duration: 0.2, type: 'easeIn'}}}  src="/camera.png"  /></>
-                      }
-                    </AnimatePresence>
-                    <AnimatePresence mode="wait">
-                      {currentColor === 1 &&
-                        <><motion.p initial={{x: 200, opacity: 0}} animate={{x: 0, opacity: 1, transition: {duration: 0.4, type: 'easeIn'}}}>Microphone</motion.p> <motion.img initial={{x: 200, opacity: 0}} animate={{x: 0, opacity: 1, transition: {duration: 0.2, type: 'easeIn'}}}  src="/mic.png"  /></>
-                      }
-                    </AnimatePresence>
-                    <AnimatePresence mode="wait">
-                      {currentColor === 2 &&
-                        <><motion.p initial={{x: 200, opacity: 0}} animate={{x: 0, opacity: 1, transition: {duration: 0.4, type: 'easeIn'}}}>Headphone</motion.p> <motion.img initial={{x: 200, opacity: 0}} animate={{x: 0, opacity: 1, transition: {duration: 0.2, type: 'easeIn'}}}  src="/headphone.png"  /></>
-                      }
-                    </AnimatePresence>
-                  </div>
-									<div className="right">+</div>
-								</div>
-								<div className="row gray">
-                  
-                  <div   className="left">
-                    <AnimatePresence mode="wait">
-                      {currentColor === 0 &&
-                        <><motion.p initial={{x: 200, opacity: 0}} animate={{x: 0, opacity: 1, transition: {duration: 0.4, type: 'easeIn'}}}>Microphone</motion.p> <motion.img initial={{x: 200, opacity: 0}} animate={{x: 0, opacity: 1, transition: {duration: 0.2, type: 'easeIn'}}}  src="/mic.png"  /></>
-                      }
-                    </AnimatePresence>
-                    <AnimatePresence mode="wait">
-                      {currentColor === 1 &&
-                        <><motion.p initial={{x: 200, opacity: 0}} animate={{x: 0, opacity: 1, transition: {duration: 0.4, type: 'easeIn'}}}>Camera</motion.p> <motion.img initial={{x: 200, opacity: 0}} animate={{x: 0, opacity: 1, transition: {duration: 0.2, type: 'easeIn'}}}  src="/camera.png"  /></>
-                      }
-                    </AnimatePresence>
-                    <AnimatePresence mode="wait">
-                      {currentColor === 2 &&
-                        <><motion.p initial={{x: 200, opacity: 0}} animate={{x: 0, opacity: 1, transition: {duration: 0.4, type: 'easeIn'}}}>Headphone</motion.p> <motion.img initial={{x: 200, opacity: 0}} animate={{x: 0, opacity: 1, transition: {duration: 0.2, type: 'easeIn'}}}  src="/headphone.png"  /></>
-                      }
-                    </AnimatePresence>
-                  </div>
-									<div className="right">+</div>
-								</div>
-								
-					
+					<div className="row gray">
+						<div className="left">
+							<AnimatePresence mode="wait">
+								{currentColor === 0 && (
+									<>
+										<motion.p
+											initial={{ x: 200, opacity: 0 }}
+											animate={{
+												x: 0,
+												opacity: 1,
+												transition: { duration: 0.4, type: "easeIn" },
+											}}
+										>
+											Camera
+										</motion.p>{" "}
+										<motion.img
+											initial={{ x: 200, opacity: 0 }}
+											animate={{
+												x: 0,
+												opacity: 1,
+												transition: { duration: 0.2, type: "easeIn" },
+											}}
+											src="/camera.png"
+										/>
+									</>
+								)}
+							</AnimatePresence>
+							<AnimatePresence mode="wait">
+								{currentColor === 1 && (
+									<>
+										<motion.p
+											initial={{ x: 200, opacity: 0 }}
+											animate={{
+												x: 0,
+												opacity: 1,
+												transition: { duration: 0.4, type: "easeIn" },
+											}}
+										>
+											Headphone
+										</motion.p>{" "}
+										<motion.img
+											initial={{ x: 200, opacity: 0 }}
+											animate={{
+												x: 0,
+												opacity: 1,
+												transition: { duration: 0.2, type: "easeIn" },
+											}}
+											src="/headphone.png"
+										/>
+									</>
+								)}
+							</AnimatePresence>
+							<AnimatePresence mode="wait">
+								{currentColor === 2 && (
+									<>
+										<motion.p
+											initial={{ x: 200, opacity: 0 }}
+											animate={{
+												x: 0,
+												opacity: 1,
+												transition: { duration: 0.4, type: "easeIn" },
+											}}
+										>
+											Microphone
+										</motion.p>{" "}
+										<motion.img
+											initial={{ x: 200, opacity: 0 }}
+											animate={{
+												x: 0,
+												opacity: 1,
+												transition: { duration: 0.2, type: "easeIn" },
+											}}
+											src="/mic.png"
+										/>
+									</>
+								)}
+							</AnimatePresence>
+						</div>
+						<div className="right">+</div>
+					</div>
+					<div className="row ">
+						<div className="left">
+							<AnimatePresence mode="wait">
+								{currentColor === 0 && (
+									<>
+										<motion.p
+											initial={{ x: 200, opacity: 0 }}
+											animate={{
+												x: 0,
+												opacity: 1,
+												transition: { duration: 0.4, type: "easeIn" },
+											}}
+										>
+											Camera
+										</motion.p>{" "}
+										<motion.img
+											initial={{ x: 200, opacity: 0 }}
+											animate={{
+												x: 0,
+												opacity: 1,
+												transition: { duration: 0.2, type: "easeIn" },
+											}}
+											src="/camera.png"
+										/>
+									</>
+								)}
+							</AnimatePresence>
+							<AnimatePresence mode="wait">
+								{currentColor === 1 && (
+									<>
+										<motion.p
+											initial={{ x: 200, opacity: 0 }}
+											animate={{
+												x: 0,
+												opacity: 1,
+												transition: { duration: 0.4, type: "easeIn" },
+											}}
+										>
+											Microphone
+										</motion.p>{" "}
+										<motion.img
+											initial={{ x: 200, opacity: 0 }}
+											animate={{
+												x: 0,
+												opacity: 1,
+												transition: { duration: 0.2, type: "easeIn" },
+											}}
+											src="/mic.png"
+										/>
+									</>
+								)}
+							</AnimatePresence>
+							<AnimatePresence mode="wait">
+								{currentColor === 2 && (
+									<>
+										<motion.p
+											initial={{ x: 200, opacity: 0 }}
+											animate={{
+												x: 0,
+												opacity: 1,
+												transition: { duration: 0.4, type: "easeIn" },
+											}}
+										>
+											Headphone
+										</motion.p>{" "}
+										<motion.img
+											initial={{ x: 200, opacity: 0 }}
+											animate={{
+												x: 0,
+												opacity: 1,
+												transition: { duration: 0.2, type: "easeIn" },
+											}}
+											src="/headphone.png"
+										/>
+									</>
+								)}
+							</AnimatePresence>
+						</div>
+						<div className="right">+</div>
+					</div>
+					<div className="row gray">
+						<div className="left">
+							<AnimatePresence mode="wait">
+								{currentColor === 0 && (
+									<>
+										<motion.p
+											initial={{ x: 200, opacity: 0 }}
+											animate={{
+												x: 0,
+												opacity: 1,
+												transition: { duration: 0.4, type: "easeIn" },
+											}}
+										>
+											Microphone
+										</motion.p>{" "}
+										<motion.img
+											initial={{ x: 200, opacity: 0 }}
+											animate={{
+												x: 0,
+												opacity: 1,
+												transition: { duration: 0.2, type: "easeIn" },
+											}}
+											src="/mic.png"
+										/>
+									</>
+								)}
+							</AnimatePresence>
+							<AnimatePresence mode="wait">
+								{currentColor === 1 && (
+									<>
+										<motion.p
+											initial={{ x: 200, opacity: 0 }}
+											animate={{
+												x: 0,
+												opacity: 1,
+												transition: { duration: 0.4, type: "easeIn" },
+											}}
+										>
+											Camera
+										</motion.p>{" "}
+										<motion.img
+											initial={{ x: 200, opacity: 0 }}
+											animate={{
+												x: 0,
+												opacity: 1,
+												transition: { duration: 0.2, type: "easeIn" },
+											}}
+											src="/camera.png"
+										/>
+									</>
+								)}
+							</AnimatePresence>
+							<AnimatePresence mode="wait">
+								{currentColor === 2 && (
+									<>
+										<motion.p
+											initial={{ x: 200, opacity: 0 }}
+											animate={{
+												x: 0,
+												opacity: 1,
+												transition: { duration: 0.4, type: "easeIn" },
+											}}
+										>
+											Headphone
+										</motion.p>{" "}
+										<motion.img
+											initial={{ x: 200, opacity: 0 }}
+											animate={{
+												x: 0,
+												opacity: 1,
+												transition: { duration: 0.2, type: "easeIn" },
+											}}
+											src="/headphone.png"
+										/>
+									</>
+								)}
+							</AnimatePresence>
+						</div>
+						<div className="right">+</div>
+					</div>
 				</div>
 				<button onClick={() => handleClick()}>Next</button>
 			</div>
