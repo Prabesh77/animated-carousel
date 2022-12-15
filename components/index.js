@@ -143,6 +143,9 @@ const MainWrapper = styled.div`
 		padding: 8px;
 		color: #fff;
 		cursor: pointer;
+		@media(max-width: 768px) {
+			margin: 1rem auto;
+		}
 	}
 `
 
