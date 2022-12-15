@@ -3,6 +3,7 @@ import Image from "next/image"
 import styled from "styled-components"
 import { useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
+import { useSwipeable } from "react-swipeable"
 
 const MainWrapper = styled.div`
 	height: 70vh;
@@ -174,8 +175,12 @@ export default function Animation() {
 			setCurrentColor(0)
 		}
 	}
+
+	const handlers = useSwipeable({
+		onSwiped: (eventData) => handleClick()
+	  });
 	return (
-		<MainWrapper degree={degree} currentColor={colors[currentColor]}>
+		<MainWrapper {...handlers} degree={degree} currentColor={colors[currentColor]}>
 			<div className="images-wrapper">
 				<svg
 					width="1497"
